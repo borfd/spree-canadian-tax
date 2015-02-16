@@ -1,4 +1,4 @@
-class Spree::Calculator::QuebecTax < Spree::Calculator 
+class Spree::Calculator::QuebecTax < Spree::Calculator
   def self.description
     "Quebec Tax"
   end
@@ -7,8 +7,12 @@ class Spree::Calculator::QuebecTax < Spree::Calculator
     super
   end
 
-  def compute(order)
+  def compute_order(order)
     calculate_taxation(order.item_total)
+  end
+
+  def compute_line_item(line_item)
+    calculate_taxation(line_item.amount)
   end
 
   private

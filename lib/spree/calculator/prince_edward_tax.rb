@@ -1,4 +1,4 @@
-class Spree::Calculator::PrinceEdwardTax < Spree::Calculator 
+class Spree::Calculator::PrinceEdwardTax < Spree::Calculator
   def self.description
     "Prince Edward Tax"
   end
@@ -7,8 +7,12 @@ class Spree::Calculator::PrinceEdwardTax < Spree::Calculator
     super
   end
 
-  def compute(order)
+  def compute_order(order)
     calculate_taxation(order.item_total)
+  end
+
+  def compute_line_item(line_item)
+    calculate_taxation(line_item.amount)
   end
 
   private
